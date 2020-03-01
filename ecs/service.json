@@ -1,0 +1,26 @@
+{
+    "cluster": "codedeploy-ecs",
+    "serviceName": "codedeploy-ecs-svc",
+    "taskDefinition": "codedeploy-ecs-task-def",
+    "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:ap-southeast-2:487523894433:targetgroup/codedeploy-ecs-1/2d524086e1c49a97",
+            "containerName": "codedeploy-ecs-app",
+            "containerPort": 80
+        }
+    ],
+    "launchType": "FARGATE",
+    "schedulingStrategy": "REPLICA",
+    "deploymentController": {
+        "type": "CODE_DEPLOY"
+    },
+    "platformVersion": "LATEST",
+    "networkConfiguration": {
+       "awsvpcConfiguration": {
+          "assignPublicIp": "ENABLED",
+          "securityGroups": [ "sg-00b24572327c57678" ],
+          "subnets": [ "subnet-9a5e53fd", "subnet-9ea39cd7" ]
+       }
+    },
+    "desiredCount": 1
+}
